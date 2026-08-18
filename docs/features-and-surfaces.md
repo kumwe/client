@@ -8,10 +8,13 @@ This is the intended product surface, not an implementation checklist claiming t
 
 | Journey | Native expectation | API position |
 |---|---|---|
-| Add installation | Validate HTTPS endpoint, discover supported contract/generation, and explain compatibility | Discovery contract required |
-| Authorize user | User-driven supported flow, scoped to exact site/audience/purpose | Current REST documents opaque bearer tokens; suitable native user flow remains a gate |
+| Add installation | Validate HTTPS endpoint, discover supported contract/generation, advertised areas, and explain compatibility | Discovery contract required |
+| Authorize user | Authentication link per [ADR-0002](architecture/decisions/0002-authentication-link-one-client-and-the-account-switcher.md): choose area, enter email, complete from the emailed link's deep-link return or the manual cross-device code | Current REST documents opaque bearer tokens; the link flow is selected product behavior and remains gated on core adoption (`V3-NC-001`) |
+| Guest arrival | An unknown address signs in to the arrival page: the deployment was notified, positioning is pending, activation arrives by email | Blocked on the core guest lifecycle (`V3-NC-003`); the arrival page is the pending account's only surface |
+| Account switcher | Hold many accounts across deployments and areas; switch instantly; add with URL + area + email; remove with revocation first | Client-owned roster over the SDK account directory; sign-in itself gated as above |
 | Select site/workspace/organization | Show only contexts the identity may use; invalidate cached state on change | Exact `Kumwe-Site` is required; richer discovery must be verified |
-| Session and account | Sign out, revoke, reauthorize, handle expiry/security epoch changes | Token lifecycle APIs exist for administrators; end-user lifecycle needs an agreed flow |
+| Session and account | Stay signed in until sign-out; revoke, reauthorize, handle expiry/security epoch changes | Persistent sessions ride the proposed rotating refresh family; end-user lifecycle remains gated on the same core adoption |
+| Open in website | Continue a browser-only journey in the system browser already signed in | Blocked on the single-use web-session handoff (`V3-NC-004`); never parity evidence, no tokens in the browser |
 | Capability-driven shell | Navigation is a projection of allowed server capabilities and client-supported surfaces | Core has capability/definition metadata in several domains; one complete client manifest is not yet established |
 | Diagnostics | Show client/core versions, contract checksum, correlation ID, clock/network state, and safe support export | Contract/version endpoint and redaction format required |
 
@@ -54,7 +57,7 @@ Core metadata is necessary but not sufficient: server responses must continue to
 
 | Journey | Native expectation | Contract requirement |
 |---|---|---|
-| Portal sign-in/context | Separate identity/session boundary from administrator | Native-safe portal authorization required; otherwise blocked |
+| Portal sign-in/context | Separate identity/session boundary from administrator; the same authentication-link flow with `portal` as the chosen area | Native-safe portal authorization required; otherwise blocked |
 | Opt-in workspaces | Only explicitly portal-exposed definitions and operations appear | Policy-filtered portal exposure metadata |
 | Records and relations | List/detail/create/update/relation/history exactly where allowed | Same application semantics, portal-specific contract projection |
 | Actions and approvals | Ordinary actions and fresh step-up decisions through native contracts | Typed action/approval and non-replayable native step-up contract |

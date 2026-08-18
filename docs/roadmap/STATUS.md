@@ -2,17 +2,24 @@
 
 | | |
 |---|---|
-| **Status date** | 2026-08-15 |
+| **Status date** | 2026-08-18 |
 | **Client phase** | Phase 0 — Product truth and decisions |
 | **Core audit baseline** | [`kumwe/cms@4e5083b3`](https://github.com/kumwe/cms/tree/4e5083b3fe43790605ae5c6c5bf8e392f9822efc) |
 | **Implementation** | Not started |
 
 ## Executive status
 
-This repository contains a documentation-first client foundation and one accepted architecture decision. It
+This repository contains a documentation-first client foundation and two accepted architecture decisions. It
 contains no embedded Dart SDK, Flutter project, generated client, automated test, build, or runnable product
 capability. The sibling SDK repository has an executable protocol foundation, but no generated resource client or
 qualified compatibility profile yet.
+
+The product's sign-in is now decided and recorded across all three repositories:
+[ADR-0002](../architecture/decisions/0002-authentication-link-one-client-and-the-account-switcher.md) selects the
+authentication link with an area chooser, guest arrival, a multi-deployment account switcher, persistent
+sessions, and the web-session handoff; core records the matching decision D17 (ADR 0009, ledger lane N
+`V3-NC-001` … `V3-NC-004`) and the SDK carries the revised wire proposals plus endpoint-free flow primitives.
+Implementation remains gated exactly as before — nothing is buildable until core adopts the contracts.
 
 The baseline is downstream preparatory work for a **proposed Kumwe Version 3 Native Client Platform**. It does not
 change or provide completion evidence for core Version 2, Gate A, or Gate B. The SDK foundation is developed
@@ -65,7 +72,7 @@ See [Native functional parity](../native-functional-parity.md) for evidence.
 
 - Confirm the representative parity journeys and which core web-only/operator responsibilities intentionally remain outside the native product.
 - Assign owners for the core contract capability groups and decide how client requirements enter core governance.
-- Accept or revise the native authorization/step-up requirements.
+- Accept or revise the native authorization/step-up requirements (the authentication-link selection is recorded in ADR-0002; the step-up half remains open).
 - Decide minimum platform versions, distribution order, and support lifecycle—or assign them to the qualification phase explicitly.
 - Decide compatibility support range, analytics/privacy posture, push/deep-link scope, and read-cache policy.
 - Review ADR-0001 and the all-native/no-WebView constraint.
@@ -73,7 +80,7 @@ See [Native functional parity](../native-functional-parity.md) for evidence.
 ## Core blockers before generated resource clients
 
 1. Correct and fixture-test static/dynamic OpenAPI against runtime responses.
-2. Publish installation, capability, version, and native authorization/step-up discovery.
+2. Publish installation, capability, version, and native authorization/step-up discovery — the selected authentication-link flow with areas, guest arrival, and the web-session handoff, now seeded in core's roadmap as lane N (`V3-NC-001` … `V3-NC-004`, decision D17/ADR 0009) with the wire proposals in `kumwe/dart-sdk`.
 3. Complete bounded CMS collections and media-management contracts needed by selected administrator journeys.
 4. Publish policy-filtered portal projection for every selected generic business operation.
 5. Publish anonymous public page/navigation/localization/presentation/media/search/form contracts for selected public scope.
