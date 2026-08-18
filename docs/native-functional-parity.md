@@ -111,7 +111,7 @@ Adding Dart heuristics for these gaps would produce a second, divergent product 
 These are client-facing requirements proposed for core; they are not contracts created by this document.
 
 1. **Contract truth and compatibility:** complete OpenAPI 3.1 response bodies, examples, Problem Details, security schemes, conditional headers, capability/version metadata, and executable drift fixtures.
-2. **Installation discovery and native authorization:** supported server metadata, site/workspace discovery, native user authorization, refresh/rotation/revocation, logout, native step-up, and minimum client/core version policy.
+2. **Installation discovery and native authorization:** supported server metadata, site/workspace discovery, the authentication-link sign-in with area binding and non-enumerating guest arrival, refresh/rotation/revocation, logout, the single-use authenticated web-session handoff, native step-up, and minimum client/core version policy.
 3. **Public delivery:** anonymous resolved-page-by-path/slug/homepage resources with canonical URL, publication state, locale, translation alternatives, structured content, layout semantics, and caching validators.
 4. **Presentation:** effective site/page presentation, theme identity/version, color and typography tokens, asset references, bounded native component semantics, and explicit unsupported-rich-content behavior.
 5. **Navigation and content scale:** nested public navigation, breadcrumbs/current state, cursor pagination, bounded search/filter/sort, and change validators.

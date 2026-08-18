@@ -4,7 +4,14 @@
 
 The client is an untrusted presentation adapter from core's perspective. It may improve usability by hiding unavailable actions, but it cannot authorize a record, reveal a field, approve an action, validate a mutation, or establish trust in an extension. Core must enforce every security decision on every request.
 
-At the current documentation-only stage, no native authentication flow has been selected or implemented.
+At the current documentation-only stage, the native authentication flow has been **selected but not
+implemented**: sign-in is the authentication link, per [ADR-0002](architecture/decisions/0002-authentication-link-one-client-and-the-account-switcher.md),
+mirrored by core decision D17 and SDK ADR 0007. The person chooses the deployment URL and the area
+(administrator or portal), enters their email address, and the emailed single-use, proof-key-bound link
+returns them to the requesting client; unknown addresses arrive as pending guests on an arrival page. The
+client never collects a Kumwe password. Nothing may be built until core exposes and documents the supported
+flow; the wire proposals live in `kumwe/dart-sdk` and the core-owned work is tracked in core's ledger
+(`V3-NC-001` … `V3-NC-004`).
 
 ## Current core evidence
 
@@ -30,7 +37,23 @@ Implementation must not begin with copied administrator tokens or a guessed logi
 - offline/expired behavior and reauthorization without data leakage; and
 - a non-browser automation/service-token path that is never confused with an interactive user session.
 
-OAuth 2.1 authorization code with PKCE or another established native-app pattern may be evaluated, but this client document does not create such a core contract.
+For the selected authentication-link flow, the accepted contract must additionally define:
+
+- non-enumeration: identical response shape, timing discipline, and rate limits whether or not the address
+  resolves, with the guest-arrival path preserving that indistinguishability;
+- proof-key binding: the emailed link's single-use code redeems only with the S256 verifier held by the
+  requesting client, so an intercepted or forwarded email completes nothing elsewhere;
+- bounded link lifetime, single-use consumption, and a safe already-used/expired landing page;
+- the cross-device path: a bounded, single-use manual completion code typed into the requesting client, never
+  an independent credential;
+- area binding at issuance (administrator or portal) reported in the token response, never inferred;
+- the pending guest state: minimum capability, arrival-page-only surface, steward notification, positioning as
+  an administrator act, and email-announced activation; and
+- persistent sign-in through rotating refresh families with honest termination on revocation, security-epoch
+  advance, or refresh refusal.
+
+The selection is recorded; this client document still does not create the core contract, and implementation
+waits for core adoption.
 
 ## Credential handling requirements
 
@@ -77,7 +100,8 @@ The client does not embed web content. It may open a validated HTTPS page in the
 - Never put native bearer tokens, cookies, hidden context, record data, or SDK operation payloads in the URL or browser.
 - Do not use a script/native bridge or share a browser cookie store.
 - The browser establishes its own session. A native authorization flow may return only a bounded one-time code/state value defined by core and exchanged through the SDK.
-- Validate return origins, schemes, state, nonce, installation identity, and expiry; reject unsolicited or replayed deep links.
+- Opening the website already signed in uses only core's future single-use, short-lived web-session handoff URL (`CORE-AUTH-002` in the SDK corpus; `V3-NC-004` in core's ledger), validated against the exact deployment origin, opened at most once, and excluded from logs and support bundles. The browser session it mints is core's own; it is a convenience bridge, never parity evidence.
+- Validate return origins, schemes, state, nonce, installation identity, and expiry; reject unsolicited or replayed deep links. For the authentication link, "unsolicited" is enforced by the ticket: a return that does not match the pending request's state and verifier completes nothing, and cross-device email reading goes through the manual completion code instead.
 - Open extension pages only when core provides a currently trusted, authorized HTTPS target. A stale bookmark preserves no authority.
 
 ## Extension trust

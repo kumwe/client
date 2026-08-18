@@ -116,13 +116,20 @@ Before authorization or feature routing, a client needs a small, non-secret, cac
 - canonical installation identity and allowed API/browser origins;
 - core product and compatibility version;
 - base and generated contract URLs/checksums/generations;
-- supported native authorization, logout, and step-up methods;
+- supported native authorization, logout, and step-up methods — for the selected sign-in this means
+  advertising the `authentication_link` profile and the enabled areas (administrator, portal), per
+  [ADR-0002](architecture/decisions/0002-authentication-link-one-client-and-the-account-switcher.md);
 - site/context discovery rules;
 - public delivery, media, localization, extension client-surface, push, deep-link, and external-browser-link capabilities;
 - request/body/page limits relevant before login; and
 - minimum/maximum supported client contract versions with an external support/upgrade URL that receives no native credentials.
 
 Sensitive capabilities and policy-filtered definitions remain authenticated resources.
+
+A machine-readable draft of this document and of the authentication-link, guest-arrival, and web-session
+handoff wire shapes exists as the `kumwe/dart-sdk` proposal corpus (`kumwe.native-discovery` and
+`kumwe.native-authorization`, both `0.2.0-proposal.1` at this writing). Those proposals are non-authoritative
+until core adopts descendants of them; this document cites them as the current design input, not as contracts.
 
 ## Contract validation matrix
 

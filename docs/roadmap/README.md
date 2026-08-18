@@ -49,7 +49,7 @@ Gate 0 authorizes contract work, not Flutter initialization by itself.
 Core-owned dependencies to verify or deliver:
 
 - complete truthful OpenAPI 3.1 with response schemas, examples, headers, Problem Details, security schemes, drift fixtures, and compatibility policy;
-- installation/client/version/capability discovery and a supported native user authorization, revocation, logout, and step-up contract;
+- installation/client/version/capability discovery and a supported native user authorization, revocation, logout, and step-up contract — for the selected sign-in ([ADR-0002](../architecture/decisions/0002-authentication-link-one-client-and-the-account-switcher.md)) that means the authentication link with area binding, the non-enumerating guest arrival lifecycle, rotating refresh families, and the single-use web-session handoff, tracked in core's ledger as `V3-NC-001` … `V3-NC-004`;
 - bounded pagination/search/filter/sort and media management needed by administrator journeys;
 - complete generated-business definition/record/action/relation/report/export contracts for administrator and explicitly exposed portal actors;
 - anonymous structured public page, route, navigation, localization, presentation, SEO, media, search, and form contracts for selected public scope;

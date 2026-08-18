@@ -12,7 +12,7 @@ The long-term scope covers three separate trust boundaries:
 | Portal | Native self-service and delegated business journeys for authenticated portal identities | Opt-in per definition, operation, and policy; deny by default |
 | Public site | Native public reading only where semantic delivery contracts exist; otherwise the journey is blocked | Anonymous/public exposure only; never reuse administrator credentials |
 
-These surfaces may share presentation primitives, but they must not share sessions, cached restricted data, or route assumptions across trust boundaries.
+These surfaces may share presentation primitives, but they must not share sessions, cached restricted data, or route assumptions across trust boundaries. One client application serves the administrator and portal boundaries: the area is chosen at sign-in per account, and every session, cache, and credential is keyed by deployment origin, area, and credential together ([ADR-0002](architecture/decisions/0002-authentication-link-one-client-and-the-account-switcher.md)). A pending guest is a state inside its chosen area's boundary — its only surface is the arrival page — not a fourth boundary.
 
 ## Definition of native functional parity
 
@@ -31,7 +31,9 @@ Visual similarity can help users transfer knowledge, but it is not functional pa
 
 Subject to core contracts and roadmap gates, the product may include:
 
-- installation discovery, compatibility inspection, sign-in, sign-out, session/token revocation, and site/workspace selection;
+- installation discovery, compatibility inspection, authentication-link sign-in with area selection, guest
+  arrival, the multi-deployment account switcher, persistent sessions, sign-out, session/token revocation,
+  site/workspace selection, and opening the website through the single-use authenticated handoff;
 - CMS content browse/read/create/update/trash/restore and workflow transitions;
 - content type and workflow inspection/management where the wire contract is sufficient for a safe native editor;
 - menu and navigation management;
@@ -69,7 +71,8 @@ The following are outside the product boundary unless a future ADR explicitly ch
 
 The following need product or core decisions before implementation:
 
-- the native end-user authorization flow and token audience;
+- core adoption of the selected authentication-link flow, its token audience/area bindings, the guest
+  lifecycle, and the web-session handoff (the product selection is made — [ADR-0002](architecture/decisions/0002-authentication-link-one-client-and-the-account-switcher.md) — the core contract is not);
 - minimum operating-system and Flutter versions;
 - support-window and core/client compatibility policy;
 - push notification and deep-link contracts;
