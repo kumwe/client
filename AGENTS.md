@@ -24,7 +24,7 @@ must label them accurately.
 
 ## Authority and dependency direction
 
-- `kumwe/cms` is authoritative for server behavior, data, authorization, validation, workflow, transactions, audit, extension trust, public rendering, and wire contracts.
+- `kumwe/app` is authoritative for server behavior, data, authorization, validation, workflow, transactions, audit, extension trust, public rendering, and wire contracts.
 - `kumwe/dart-sdk` translates adopted machine contracts into typed transport and validated runtime contract values. It must not recreate domain policy or own Flutter screen models.
 - The Flutter client will depend on released SDK packages for native API operations. Widgets, view models, and platform adapters must not call HTTP directly.
 - Do not add an in-app WebView or embedded-server fallback. A clearly labeled external-system-browser handoff may point users to the independently available Kumwe website, but it is outside the client, does not count as parity, and must not receive native credentials.

@@ -3,7 +3,7 @@
 - **Status:** Accepted
 - **Date:** 2026-08-18
 - **Decision owners:** Product owner; Kumwe client maintainers
-- **Core evidence baseline:** [`kumwe/cms@4e5083b3`](https://github.com/kumwe/cms/tree/4e5083b3fe43790605ae5c6c5bf8e392f9822efc), with the decision cross-referenced in core decision D17 ([ADR 0009](https://github.com/kumwe/app/blob/main/docs/roadmap/decisions/0009-native-client-platform-and-the-authentication-link.md)) and SDK [ADR 0007](https://github.com/kumwe/dart-sdk/blob/main/docs/decisions/0007-authentication-link-is-the-primary-sign-in.md)
+- **Core evidence baseline:** [`kumwe/app@4e5083b3`](https://github.com/kumwe/app/tree/4e5083b3fe43790605ae5c6c5bf8e392f9822efc), with the decision cross-referenced in core decision D17 ([ADR 0009](https://github.com/kumwe/app/blob/master/docs/roadmap/decisions/0009-native-client-platform-and-the-authentication-link.md)) and SDK [ADR 0007](https://github.com/kumwe/dart-sdk/blob/main/docs/decisions/0007-authentication-link-is-the-primary-sign-in.md)
 
 ## Context
 
@@ -16,8 +16,8 @@ client's sign-in journey is, whether administrator and portal justify two separa
 several deployments coexist in one installation of the client.
 
 This ADR decides product mechanism and client-owned structure. It does not create a core contract: the wire
-design lives in the `kumwe/dart-sdk` proposal corpus (`kumwe.native-authorization` `0.2.0-proposal.1`,
-`kumwe.native-discovery` `0.2.0-proposal.1`), core adoption is tracked in core's lane N (`V3-NC-001` …
+design lives in the `kumwe/dart-sdk` proposal corpus (`kumwe.native-authorization` `0.2.0-proposal.2`,
+`kumwe.native-discovery` `0.2.0-proposal.2`), core adoption is tracked in core's lane N (`V3-NC-001` …
 `V3-NC-004`), and implementation here still starts only after core exposes the supported flow.
 
 ## Decision

@@ -26,7 +26,7 @@ Those server contributions are valuable inputs but not a Flutter contract:
 - an extension asset may be visual or executable browser content with no native meaning; and
 - hiding a server navigation item does not communicate a native route, field renderer, or offline policy.
 
-See the pinned core [extension architecture](https://github.com/kumwe/cms/blob/4e5083b3fe43790605ae5c6c5bf8e392f9822efc/docs/architecture/extensions.md) and [generated business surfaces](https://github.com/kumwe/cms/blob/4e5083b3fe43790605ae5c6c5bf8e392f9822efc/docs/architecture/generated-business-surfaces.md).
+See the pinned core [extension architecture](https://github.com/kumwe/app/blob/4e5083b3fe43790605ae5c6c5bf8e392f9822efc/docs/architecture/extensions.md) and [generated business surfaces](https://github.com/kumwe/app/blob/4e5083b3fe43790605ae5c6c5bf8e392f9822efc/docs/architecture/generated-business-surfaces.md).
 
 ## Portability levels
 

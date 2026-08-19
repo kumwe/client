@@ -4,7 +4,7 @@
 |---|---|
 | **Status date** | 2026-08-18 |
 | **Client phase** | Phase 0 — Product truth and decisions |
-| **Core audit baseline** | [`kumwe/cms@4e5083b3`](https://github.com/kumwe/cms/tree/4e5083b3fe43790605ae5c6c5bf8e392f9822efc) |
+| **Core audit baseline** | [`kumwe/app@4e5083b3`](https://github.com/kumwe/app/tree/4e5083b3fe43790605ae5c6c5bf8e392f9822efc) |
 | **Implementation** | Not started |
 
 ## Executive status
@@ -28,7 +28,7 @@ or close a core-owned gate.
 
 Phase 0 is **under review**. Gate 0 has not been assessed. Gate A is blocked on verified core contract maturity; all later gates are blocked in sequence.
 
-The core [`docs/roadmap/STATUS.md`](https://github.com/kumwe/cms/blob/4e5083b3fe43790605ae5c6c5bf8e392f9822efc/docs/roadmap/STATUS.md) present at the audit revision also reports its own Phase 0 truth/contracts work and public contract classification as open. That core status is independently governed and must be rechecked at the revision selected for Gate A; this client status does not supersede it.
+The core [`docs/roadmap/STATUS.md`](https://github.com/kumwe/app/blob/4e5083b3fe43790605ae5c6c5bf8e392f9822efc/docs/roadmap/STATUS.md) present at the audit revision also reports its own Phase 0 truth/contracts work and public contract classification as open. That core status is independently governed and must be rechecked at the revision selected for Gate A; this client status does not supersede it.
 
 ## Phase board
 

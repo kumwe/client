@@ -3,7 +3,7 @@
 - **Status:** Accepted
 - **Date:** 2026-08-15
 - **Decision owners:** Kumwe client maintainers
-- **Core evidence baseline:** [`kumwe/cms@4e5083b3`](https://github.com/kumwe/cms/tree/4e5083b3fe43790605ae5c6c5bf8e392f9822efc)
+- **Core evidence baseline:** [`kumwe/app@4e5083b3`](https://github.com/kumwe/app/tree/4e5083b3fe43790605ae5c6c5bf8e392f9822efc)
 
 ## Context
 
