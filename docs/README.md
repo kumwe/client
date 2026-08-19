@@ -32,6 +32,6 @@ This directory is the product and architecture baseline for the planned Kumwe na
 
 ## Evidence baseline
 
-The initial investigation is pinned to [`kumwe/cms@4e5083b3`](https://github.com/kumwe/cms/tree/4e5083b3fe43790605ae5c6c5bf8e392f9822efc). Core remains authoritative. The repository's historical ERP-readiness prompts supplied product direction, but they are not treated as shipped contracts.
+The initial investigation is pinned to [`kumwe/app@4e5083b3`](https://github.com/kumwe/app/tree/4e5083b3fe43790605ae5c6c5bf8e392f9822efc). Core remains authoritative. The repository's historical ERP-readiness prompts supplied product direction, but they are not treated as shipped contracts.
 
 Read [`AGENTS.md`](AGENTS.md) before changing these documents.

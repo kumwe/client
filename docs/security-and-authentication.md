@@ -21,7 +21,7 @@ Core can issue, rotate, list metadata for, and revoke API tokens through authori
 
 Generated business high-impact approval decisions require fresh session-bound step-up at the audited revision. Bearer REST cannot manufacture or consume that proof. The native approval-decision journey is therefore blocked until core provides an explicit native authorization/step-up contract.
 
-See the pinned core [REST authentication contract](https://github.com/kumwe/cms/blob/4e5083b3fe43790605ae5c6c5bf8e392f9822efc/docs/rest-api.md#authentication) and [business security model](https://github.com/kumwe/cms/blob/4e5083b3fe43790605ae5c6c5bf8e392f9822efc/docs/business-security.md).
+See the pinned core [REST authentication contract](https://github.com/kumwe/app/blob/4e5083b3fe43790605ae5c6c5bf8e392f9822efc/docs/rest-api.md#authentication) and [business security model](https://github.com/kumwe/app/blob/4e5083b3fe43790605ae5c6c5bf8e392f9822efc/docs/business-security.md).
 
 ## Native authentication gate
 

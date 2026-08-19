@@ -25,10 +25,10 @@ Runtime behavior winning a disagreement does not make undocumented behavior safe
 
 The initial client investigation is pinned to:
 
-- core repository: [`kumwe/cms`](https://github.com/kumwe/cms);
-- core revision: [`4e5083b3fe43790605ae5c6c5bf8e392f9822efc`](https://github.com/kumwe/cms/tree/4e5083b3fe43790605ae5c6c5bf8e392f9822efc);
-- static contract: [`api/openapi/kumwe-v1.json`](https://github.com/kumwe/cms/blob/4e5083b3fe43790605ae5c6c5bf8e392f9822efc/api/openapi/kumwe-v1.json); and
-- stable API guide: [`docs/rest-api.md`](https://github.com/kumwe/cms/blob/4e5083b3fe43790605ae5c6c5bf8e392f9822efc/docs/rest-api.md).
+- core repository: [`kumwe/app`](https://github.com/kumwe/app);
+- core revision: [`4e5083b3fe43790605ae5c6c5bf8e392f9822efc`](https://github.com/kumwe/app/tree/4e5083b3fe43790605ae5c6c5bf8e392f9822efc);
+- static contract: [`api/openapi/kumwe-v1.json`](https://github.com/kumwe/app/blob/4e5083b3fe43790605ae5c6c5bf8e392f9822efc/api/openapi/kumwe-v1.json); and
+- stable API guide: [`docs/rest-api.md`](https://github.com/kumwe/app/blob/4e5083b3fe43790605ae5c6c5bf8e392f9822efc/docs/rest-api.md).
 
 Installed sites may assemble `/api/v1/openapi.json` from active trusted runtime and published business definitions. A static repository contract alone cannot describe every runtime-contributed schema. Compatibility evidence must therefore include both the core base contract and representative installed-site generated contracts.
 
@@ -128,7 +128,7 @@ Sensitive capabilities and policy-filtered definitions remain authenticated reso
 
 A machine-readable draft of this document and of the authentication-link, guest-arrival, and web-session
 handoff wire shapes exists as the `kumwe/dart-sdk` proposal corpus (`kumwe.native-discovery` and
-`kumwe.native-authorization`, both `0.2.0-proposal.1` at this writing). Those proposals are non-authoritative
+`kumwe.native-authorization`, both `0.2.0-proposal.2` at this writing). Those proposals are non-authoritative
 until core adopts descendants of them; this document cites them as the current design input, not as contracts.
 
 ## Contract validation matrix

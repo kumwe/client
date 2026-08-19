@@ -34,7 +34,7 @@ See [Architecture](docs/architecture.md) and [ADR-0001](docs/architecture/decisi
 
 ## What the API investigation established
 
-The baseline investigation is pinned to [`kumwe/cms@4e5083b3`](https://github.com/kumwe/cms/tree/4e5083b3fe43790605ae5c6c5bf8e392f9822efc). At that revision, core exposes substantial authenticated REST coverage for CMS content, content models and workflows, menus, identity and tokens, settings, extensions, automation, and generic generated business resources. The generated business contract is particularly suitable for a metadata-driven native client.
+The baseline investigation is pinned to [`kumwe/app@4e5083b3`](https://github.com/kumwe/app/tree/4e5083b3fe43790605ae5c6c5bf8e392f9822efc). At that revision, core exposes substantial authenticated REST coverage for CMS content, content models and workflows, menus, identity and tokens, settings, extensions, automation, and generic generated business resources. The generated business contract is particularly suitable for a metadata-driven native client.
 
 The same investigation found that a one-to-one **native public-site renderer is not yet supported by a complete structured delivery contract**. The authoritative public site is assembled by server handlers, the public page locator, presentation services, Twig templates, theme assets, translations, and extension contributions. Those journeys remain blocked in the client until APIs exist for resolved public pages, nested navigation, effective presentation, SEO, media, search/forms/feeds, and portable extension surfaces.
 
