@@ -1,64 +1,40 @@
 # Kumwe native client
 
-Kumwe native client is the planned Flutter application for operating a Kumwe installation from desktop and mobile devices. It is intended to cover the authorized outcomes of Kumwe's administrator, authenticated portal, and public-site experiences while keeping Kumwe core as the only authority for data, policy, validation, workflows, and extension lifecycle.
+[![Status: design foundation](https://img.shields.io/badge/status-design%20foundation-blue)](docs/roadmap/STATUS.md)
+[![Target platforms](https://img.shields.io/badge/targets-desktop%20%26%20mobile-blue)](docs/platform-targets.md)
 
-> [!IMPORTANT]
-> This repository is currently a **documentation-first foundation**. It contains no Flutter application, Dart SDK, generated API client, runnable binary, or implemented product capability. Statements about the intended product are requirements or design decisions, not claims of shipped behavior.
+Kumwe native client defines the planned Flutter application for operating a Kumwe installation from desktop and mobile devices. It covers native presentation for administrator, portal and public experiences, with Core retaining authority over data, policy, validation, workflows and extension lifecycle.
 
-This repository is downstream product work for a **proposed Kumwe Version 3 Native Client Platform**. It does not
-change, extend, or supply completion evidence for Kumwe core Version 2, Gate A, or Gate B. The independent
-Flutter-free SDK foundation lives in [`kumwe/dart-sdk`](https://github.com/kumwe/dart-sdk); this client will consume
-released SDK packages once core-owned contracts and SDK compatibility gates are satisfied.
+## Availability
 
-## Product intent
+This repository contains product requirements and architecture decisions. It does **not** contain a Flutter application, generated API client, runnable binary, automated build or published client release. There is no application to install yet. The roadmap and contract requirements remain active development inputs.
 
-The client will target:
+The independent, Flutter-free transport foundation lives in [`kumwe/dart-sdk`](https://github.com/kumwe/dart-sdk). This client will consume released SDK packages when their Core contracts and compatibility checks are satisfied. Client readiness is assessed separately from Core and the PHP libraries.
 
-- Linux, macOS, and Windows desktop;
-- Android and iOS mobile; and
-- native, accessible, adaptive interfaces built with Flutter and Dart.
+## Platforms and product scope
 
-Flutter web is intentionally out of scope. Kumwe already owns server-rendered public, portal, and administrator web surfaces; a second browser application would duplicate those surfaces without solving the native-client problem.
+The planned targets are Linux, macOS and Windows desktop, plus Android and iOS mobile. Flutter web is outside the scope.
 
-"Parity" means that a permitted user can reach the same business outcome with the same data, authorization decision, validation, concurrency protection, audit attribution, and stable error semantics. It does **not** mean copying Twig markup, Lit components, CSS, or DOM structure into Flutter. The client will wait for portable semantic/API contracts rather than embed server-rendered pages. The existing Kumwe website remains independently available in a system browser, but leaving the client does not count as client parity.
+Native parity means equivalent authorized outcomes, data, concurrency protection, audit attribution and error semantics. It does not require copying server-rendered markup. Browser-only journeys remain explicit external links and do not count as native parity.
 
-## Responsibility boundary
+See [product scope](docs/product-scope.md), [platform targets](docs/platform-targets.md) and [accessibility, localization and adaptive UX](docs/accessibility-localization-adaptive-ux.md).
 
-| Layer | Owns | Must not own |
-|---|---|---|
-| Kumwe core | Authoritative data and policy; authentication and authorization; validation; workflows; transactions; audit; extension trust and lifecycle; public web rendering; canonical OpenAPI and runtime capability contracts | Flutter state, platform widgets, or client-only navigation |
-| [`kumwe/dart-sdk`](https://github.com/kumwe/dart-sdk) | Typed transport models; request construction; site and authorization headers; Problem Details; ETags; idempotency; capability/version negotiation | Business-policy decisions, hidden defaults, or UI |
-| Flutter client | Native presentation; adaptive navigation; accessibility; secure local credential handling; local ephemeral state; user-driven orchestration | Reimplementation of server rules, authoritative persistence, or direct database access |
+## Contract with Core
 
-See [Architecture](docs/architecture.md) and [ADR-0001](docs/architecture/decisions/0001-core-api-dart-sdk-flutter-boundary.md).
+| Layer | Responsibility |
+| --- | --- |
+| [Kumwe Core](https://github.com/kumwe/app) | Authoritative data, authentication and authorization, policy, validation, workflows, transactions, audit, extension lifecycle and versioned wire contracts |
+| [Dart SDK](https://github.com/kumwe/dart-sdk) | Typed transport, site and authorization headers, Problem Details, ETags, idempotency and capability/version negotiation |
+| Flutter client | Native presentation, adaptive navigation, accessibility, secure local credential handling and user-driven orchestration |
 
-## What the API investigation established
+The client must not reimplement server business rules, access the database, or use undocumented transport fields. Offline mutation needs a Core-owned synchronization and conflict contract before it can be supported.
 
-The baseline investigation is pinned to [`kumwe/app@4e5083b3`](https://github.com/kumwe/app/tree/4e5083b3fe43790605ae5c6c5bf8e392f9822efc). At that revision, core exposes substantial authenticated REST coverage for CMS content, content models and workflows, menus, identity and tokens, settings, extensions, automation, and generic generated business resources. The generated business contract is particularly suitable for a metadata-driven native client.
+The maintained boundary and evidence requirements are in [architecture](docs/architecture.md), [contracts and source of truth](docs/contracts-and-source-of-truth.md), and [security and authentication](docs/security-and-authentication.md). [Native functional parity](docs/native-functional-parity.md) records the API audit at its exact Core revision; it is not a claim about every later Core release.
 
-The same investigation found that a one-to-one **native public-site renderer is not yet supported by a complete structured delivery contract**. The authoritative public site is assembled by server handlers, the public page locator, presentation services, Twig templates, theme assets, translations, and extension contributions. Those journeys remain blocked in the client until APIs exist for resolved public pages, nested navigation, effective presentation, SEO, media, search/forms/feeds, and portable extension surfaces.
+## Development
 
-The detailed, evidence-based classification is in [Native functional parity](docs/native-functional-parity.md).
+Start with the [current status and open dependencies](docs/roadmap/STATUS.md), [roadmap](docs/roadmap/README.md) and [architecture decisions](docs/architecture/decisions/). Implementation depends on the Core API contract, SDK compatibility, authentication, platform support and representative parity journeys.
 
-## Documentation map
+Read [contributor instructions](AGENTS.md) and [documentation instructions](docs/AGENTS.md). Documentation changes require local-link, terminology, status and contradiction checks. Requirements and proposals must stay distinguishable from implemented behavior. Do not initialize Flutter or generate resource models before the documented contract gates are satisfied.
 
-- [Vision and objectives](docs/vision-and-objectives.md)
-- [Product scope and non-goals](docs/product-scope.md)
-- [Native functional parity](docs/native-functional-parity.md)
-- [Features and surfaces](docs/features-and-surfaces.md)
-- [Architecture and responsibility boundary](docs/architecture.md)
-- [Platform targets](docs/platform-targets.md)
-- [Security and authentication](docs/security-and-authentication.md)
-- [Accessibility, localization, and adaptive UX](docs/accessibility-localization-adaptive-ux.md)
-- [Contracts and source-of-truth lifecycle](docs/contracts-and-source-of-truth.md)
-- [Extension client surfaces](docs/extensions.md)
-- [Roadmap](docs/roadmap/README.md) and [current status](docs/roadmap/STATUS.md)
-- [Architecture decisions](docs/architecture/decisions/)
-
-## Current status
-
-The repository is in Phase 0: product contracts and architectural decisions. No implementation phase has started. Before Flutter code is initialized, the core/API contract gate, SDK boundary, authentication flow, platform support policy, and representative parity journeys must be approved. See [Programme status](docs/roadmap/STATUS.md).
-
-## Contributing
-
-Read the repository [agent and contributor instructions](AGENTS.md), then the narrower [documentation instructions](docs/AGENTS.md) before changing documentation. A contribution must not imply that a planned capability is implemented. Client documents may identify core gaps and propose contracts, but normative Kumwe contracts remain in the core repository.
+The [documentation index](docs/README.md) links the complete product and development documentation.
